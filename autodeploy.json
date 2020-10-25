@@ -1,0 +1,22 @@
+{
+  "docker_compose_path": "./docker-compose.yml",
+  "environments": {
+    "blue": {
+      "name": "netcat_server_blue"
+    },
+    "green": {
+      "name": "netcat_server_green"
+    }
+  },
+  "startup": {
+    "timeout": 10
+  },
+  "working": {
+    "timeout": 10,
+    "threshold": 1,
+    "samples": 100
+  },
+  "shutdown": {
+    "timeout": 10
+  }
+}
