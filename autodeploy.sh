@@ -27,7 +27,7 @@ fi
 
 echo "[INFO] $SHUTDOWN is running."
 echo "[INFO] $STARTUP will soon start up."
-eval "docker-compose up -d --build $STARTUP"
+eval "docker-compose -f $DOCKER_COMPOSE_PATH up -d --build $STARTUP"
 
 WATCH_COUNT=0
 HEALTHY_COUNT=0
@@ -49,7 +49,7 @@ while [ $WORKING_COUNT -lt $WORKING_THRESHOLD ]; do
     echo "[ERROR] $STARTUP did not working."
     exit 1
   fi
-  WORKING_COUNT=$(docker-compose logs --tail $WORKING_SAMPLES $STARTUP | grep -e GET -e POST | wc -l)
+  WORKING_COUNT=$(docker-compose -f $DOCKER_COMPOSE_PATH logs --tail $WORKING_SAMPLES $STARTUP | grep -e GET -e POST | wc -l)
 done
 
 
