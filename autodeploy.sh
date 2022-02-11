@@ -50,6 +50,7 @@ while [ $WORKING_COUNT -lt $WORKING_THRESHOLD ]; do
     exit 1
   fi
   WORKING_COUNT=$(docker-compose -f $DOCKER_COMPOSE_PATH logs --tail $WORKING_SAMPLES $STARTUP | grep -e GET -e POST | wc -l)
+  sleep 1
 done
 
 
